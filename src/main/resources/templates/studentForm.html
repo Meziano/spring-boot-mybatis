@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>Student Details</title>
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+    <div class="container">
+        <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+        <h2>Student Details</h2>
+        <div>
+            <form class="form-horizontal" th:object="${student}" th:action="@{/student}" method="post">
+                <input type="hidden" th:field="*{id}" /> 
+                <!--  <input type="hidden" th:field="*{studentId}" />
+                <input type="hidden" th:field="*{version}" />
+                 -->
+                
+                <div class="form-group">
+                    <label class="col control-label">Fisrtname:</label>
+                    <div class="col">
+                        <input type="text" class="form-control" th:field="*{firstName}" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col control-label">Lastname:</label>
+                    <div class="col">
+                        <input type="text" class="form-control" th:field="*{lastName}" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col control-label">Current Semester</label>
+                    <div class="col">
+                        <input type="text" class="form-control" th:field="*{semester}" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col control-label">Date Of Birth</label>
+                    <div class="col">
+                        <input type="date" class="form-control" th:field="*{dob}" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col control-label">Date Of Inscription</label>
+                    <div class="col">
+                        <input type="date" class="form-control" th:field="*{doi}" />
+                    </div>
+                </div>
+                <!-- 
+                <div class="form-group">
+                    <label class="col control-label">Image Url:</label>
+                    <div class="col">
+                        <input type="text" class="form-control" th:field="*{imageUrl}" />
+                    </div>
+                </div>
+                 -->
+                <div class="row">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>

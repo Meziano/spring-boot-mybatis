@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+    <Appenders>
+        <Console name="console" target="System.out">
+            <PatternLayout pattern="%-5p: %c - %m%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        
+        <!-- Root Logger -->
+        <Root level="info" >
+            <appenderRef ref="console" />
+        </Root>
+        <logger name="de.gsi.meziane.spring.boot.*" level="info" additivity="false">
+            <appenderRef ref="console" />
+        </logger>
+        
+        <!-- 3rdparty Loggers -->
+        <logger name="org.springframework.core" level="info">
+            <appenderRef ref="console" />
+        </logger>
+
+        <logger name="org.springframework.beans" level="info">
+            <appenderRef ref="console" />
+        </logger>
+
+        <logger name="org.springframework.context" level="info">
+            <appenderRef ref="console" />
+        </logger>
+
+        <logger name="org.springframework.boot" level="info">
+            <appenderRef ref="console" />
+        </logger>
+
+    </Loggers>
+</Configuration>

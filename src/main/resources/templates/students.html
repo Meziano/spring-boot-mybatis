@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>List Of Students</title>
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(students)}">
+        <h2>Students List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>lastname</th>
+                <th>Date Of Birth</th>
+                <th>Current Semester</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="student : ${students}">
+                <td ><a th:text="${student.id}" th:href="${'/student/' + student.id}">Id</a></td>
+                <td th:text="${student.firstName}">Firstname</td>
+                <td th:text="${student.lastName}">LastName</td>
+                <td th:text="${#temporals.format(student.dob,'dd.MM.yyyy')}">Date Of Birth</td>                
+                            
+                <td th:text="${student.semester}">Studying Semester</td>
+                <td><a th:href="${'/student/' + student.id}">View</a></td>
+                <td><a th:href="${'/student/edit/' + student.id}">Edit</a></td>
+                <td><a th:href="${'/student/delete/' + student.id}">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
