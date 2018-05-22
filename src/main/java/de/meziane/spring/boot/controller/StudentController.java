@@ -31,19 +31,14 @@ public class StudentController {
     @Autowired
     StudentBatisRepo repo;
 
-    @RequestMapping("hello")
-    public String sayhello() {
-        return "Hello from MyBatis.";
-    }
-
-    @RequestMapping(value = "student/new")
+    @RequestMapping(value = "/student/new")
     public String addStudent(final Model model) {
         model.addAttribute("student", new Student());
         logger.info(">>> GET REQUEST student/new RECEIVED   <<<");
         return "studentForm";
     }
 
-    @GetMapping("students")
+    @GetMapping("/students")
     public String getAll(final Model data) {
         // final List<Student> students = repo.findAll();
         logger.info(">>>   GET REQUEST students RECEIVED   <<<");
@@ -52,7 +47,7 @@ public class StudentController {
         return "students";
     }
 
-    @GetMapping("student/{id}")
+    @GetMapping("/student/{id}")
     public String showStudent(@PathVariable final long id, final Model model) {
         logger.info(">>>   GET REQUEST student/{} RECEIVED   <<<", id);
         final Student student = repo.findById(id);
@@ -60,7 +55,7 @@ public class StudentController {
         return "studentView";
     }
 
-    @GetMapping("student/edit/{id}")
+    @GetMapping("/student/edit/{id}")
     public String editStudent(@PathVariable final long id, final Model model) {
         final Student student = repo.findById(id);
         model.addAttribute("student", student);
@@ -81,7 +76,7 @@ public class StudentController {
         return "redirect:/student/" + student.getId();
     }
 
-    @RequestMapping("student/delete/{id}")
+    @RequestMapping("/student/delete/{id}")
     public String delete(@PathVariable final Long id) {
         logger.info(">>>   DELETE REQUEST student/delete/{} RECEIVED   <<<", id);
         final Long idDeleted = repo.delete(id);
